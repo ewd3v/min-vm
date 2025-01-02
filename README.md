@@ -32,7 +32,7 @@ If you want to make modifications to the vm, then first get the proper tooling w
 rokit install
 ```
 
-(You can also just manually install [darklua](https://github.com/seaofvoices/darklua))
+(You can also just manually install [darklua](https://github.com/seaofvoices/darklua).)
 
 <br>
 
