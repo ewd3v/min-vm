@@ -1,0 +1,12 @@
+{
+    "name": "min-vm",
+    "module": "src/index.js",
+    "scripts": {
+        "test": "bun run test/index.js",
+        "gen": "darklua process -c vm/.darklua.json vm/vm.luau vm/vm_output.luau"
+    },
+    "type": "module",
+    "dependencies": {
+        "@oneidentity/zstd-js": "^1.0.3"
+    }
+}

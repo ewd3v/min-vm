@@ -1,0 +1,31 @@
+{
+    "generator": {
+        "name": "dense",
+        "column_span": 999999999999999999
+    },
+    "rules": [
+        "compute_expression",
+        "convert_index_to_field",
+        "convert_local_function_to_assign",
+        "remove_unused_variable",
+        "remove_nil_declaration",
+        "remove_unused_while",
+        "remove_unused_if_branch",
+        "filter_after_early_return",
+        "remove_empty_do",
+        "remove_unused_variable",
+        "remove_function_call_parens",
+        "group_local_assignment",
+
+        "remove_types",
+        "remove_comments",
+        "remove_spaces",
+        "remove_types",
+
+        {
+            "rule": "rename_variables",
+            "globals": ["$default", "$roblox"],
+            "include_functions": true
+        }
+    ]
+}
