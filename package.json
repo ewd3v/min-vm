@@ -1,5 +1,5 @@
 {
-    "name": "min-vm",
+    "name": "zluau-vm",
     "module": "src/index.js",
     "scripts": {
         "test": "bun run test/index.js",

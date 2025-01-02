@@ -1,6 +1,6 @@
-# min-vm
+# zluau-vm
 
-A heavy minification utility
+A Luau code compression utility<br>(Luau bytecode + zstd compression + minified [Fiu vm](https://github.com/rce-incorporated/Fiu) fork = compression)
 
 Not an obfuscator, but I suppose it works as one.<br>(Notice: extracting bytecode from the output is easy, but the full source code will be hidden).
 
@@ -48,6 +48,6 @@ This should generate a `vm_output.luau` file, copy it's contents and paste it in
 
 This project was created using `bun init` in bun v1.1.42. [Bun](https://bun.sh) is a fast all-in-one JavaScript runtime.
 
-Uses [http requests to compile](https://github.com/Open-SB/luau-compile) Luau (check [src/index.js](https://github.com/ewd3v/min-vm/blob/main/src/index.js)).
+Uses [http requests to compile](https://github.com/Open-SB/luau-compile) Luau (check [src/index.js](https://github.com/ewd3v/zluau-vm/blob/main/src/index.js)).
 
-The vm being used for "minified" files is an edit of [Fiu](https://github.com/rce-incorporated/Fiu)
+The vm being used for compressed files is a fork of [Fiu](https://github.com/rce-incorporated/Fiu)

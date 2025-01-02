@@ -6,7 +6,7 @@ console.log("Initializing...")
 await ZstdInit()
 console.log("Initialized")
 
-export const minify = async (source, settings) => {
+export const compress = async (source, settings) => {
     settings = parseSettings(settings)
 
     // https://github.com/Open-SB/luau-compile
