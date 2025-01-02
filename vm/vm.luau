@@ -315,8 +315,8 @@ local function readVarInt()
 
 	for i = 0, 4 do
 		local value = readByte()
-		result = bit32_bor(result, bit32_lshift(bit32_band(value, 0x7F), i * 7))
-		if not bit32_btest(value, 0x80) then
+		result = bit32_bor(result, bit32_lshift(bit32_band(value, 127), i * 7))
+		if not bit32_btest(value, 128) then
 			break
 		end
 	end
@@ -356,7 +356,7 @@ end
 
 local function readInstruction(codeList)
 	local value = readWord()
-	local opcode = bit32_band(value, 0xFF)
+	local opcode = bit32_band(value, 255)
 
 	local opinfo = opList[opcode + 1]
 	local opname = opinfo[1]
@@ -375,21 +375,21 @@ local function readInstruction(codeList)
 	table_insert(codeList, inst)
 
 	if opmode == 1 then --[[ A ]]
-		inst.A = bit32_band(bit32_rshift(value, 8), 0xFF)
+		inst.A = bit32_band(bit32_rshift(value, 8), 255)
 	elseif opmode == 2 then --[[ AB ]]
-		inst.A = bit32_band(bit32_rshift(value, 8), 0xFF)
-		inst.B = bit32_band(bit32_rshift(value, 16), 0xFF)
+		inst.A = bit32_band(bit32_rshift(value, 8), 255)
+		inst.B = bit32_band(bit32_rshift(value, 16), 255)
 	elseif opmode == 3 then --[[ ABC ]]
-		inst.A = bit32_band(bit32_rshift(value, 8), 0xFF)
-		inst.B = bit32_band(bit32_rshift(value, 16), 0xFF)
-		inst.C = bit32_band(bit32_rshift(value, 24), 0xFF)
+		inst.A = bit32_band(bit32_rshift(value, 8), 255)
+		inst.B = bit32_band(bit32_rshift(value, 16), 255)
+		inst.C = bit32_band(bit32_rshift(value, 24), 255)
 	elseif opmode == 4 then --[[ AD ]]
-		inst.A = bit32_band(bit32_rshift(value, 8), 0xFF)
-		local temp = bit32_band(bit32_rshift(value, 16), 0xFFFF)
-		inst.D = if temp < 0x8000 then temp else temp - 0x10000
+		inst.A = bit32_band(bit32_rshift(value, 8), 255)
+		local temp = bit32_band(bit32_rshift(value, 16), 65535)
+		inst.D = if temp < 32768 then temp else temp - 16 ^ 4
 	elseif opmode == 5 then --[[ AE ]]
-		local temp = bit32_band(bit32_rshift(value, 8), 0xFFFFFF)
-		inst.E = if temp < 0x800000 then temp else temp - 0x1000000
+		local temp = bit32_band(bit32_rshift(value, 8), 16 ^ 6 - 1)
+		inst.E = if temp < 8388608 then temp else temp - 16 ^ 6
 	end
 
 	if usesAux then
@@ -416,17 +416,17 @@ local function checkkmode(inst, k)
 	elseif kmode == 4 then --// AUX import
 		local extend = inst.d
 		local count = bit32_rshift(extend, 30)
-		local id0 = bit32_band(bit32_rshift(extend, 20), 0x3FF)
+		local id0 = bit32_band(bit32_rshift(extend, 20), 1023)
 
 		inst.K0 = k[id0 + 1]
 		inst.KC = count
 		if count == 2 then
-			local id1 = bit32_band(bit32_rshift(extend, 10), 0x3FF)
+			local id1 = bit32_band(bit32_rshift(extend, 10), 1023)
 
 			inst.K1 = k[id1 + 1]
 		elseif count == 3 then
-			local id1 = bit32_band(bit32_rshift(extend, 10), 0x3FF)
-			local id2 = bit32_band(bit32_rshift(extend, 0), 0x3FF)
+			local id1 = bit32_band(bit32_rshift(extend, 10), 1023)
+			local id2 = bit32_band(bit32_rshift(extend, 0), 1023)
 
 			inst.K1 = k[id1 + 1]
 			inst.K2 = k[id2 + 1]
@@ -443,7 +443,7 @@ local function checkkmode(inst, k)
 	elseif kmode == 7 then --// B
 		inst.K = k[inst.B + 1]
 	elseif kmode == 8 then --// AUX number low 16 bits
-		inst.K = bit32_band(inst.d, 0xf)
+		inst.K = bit32_band(inst.d, 15)
 	end
 end
 

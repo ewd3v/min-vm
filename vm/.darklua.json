@@ -4,7 +4,6 @@
         "column_span": 999999999999999999
     },
     "rules": [
-        "compute_expression",
         "convert_index_to_field",
         "convert_local_function_to_assign",
         "remove_unused_variable",

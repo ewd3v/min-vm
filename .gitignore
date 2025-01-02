@@ -1,6 +1,7 @@
 test/input.luau
 test/output.luau
 vm/vm_output.luau
+vm/notes.txt
 
 # Based on https://raw.githubusercontent.com/github/gitignore/main/Node.gitignore
 
