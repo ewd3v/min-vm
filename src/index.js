@@ -9,6 +9,7 @@ console.log("Initialized")
 export const minify = async (source, settings) => {
     settings = parseSettings(settings)
 
+    // https://github.com/Open-SB/luau-compile
     const compileResponse = await fetch(
         "https://luau-compile.shuttleapp.rs/compile",
         {
