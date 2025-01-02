@@ -84,89 +84,89 @@ end
 -- // HAS_AUX boolean specifies whether the instruction is followed up with an AUX word, which may be used to execute the instruction.
 
 local opList = {
-	{ "NOP", 0, 0, _false },
-	{ "BREAK", 0, 0, _false },
-	{ "LOADNIL", 1, 0, _false },
-	{ "LOADB", 3, 0, _false },
-	{ "LOADN", 4, 0, _false },
-	{ "LOADK", 4, 3, _false },
-	{ "MOVE", 2, 0, _false },
-	{ "GETGLOBAL", 1, 1, _true },
-	{ "SETGLOBAL", 1, 1, _true },
-	{ "GETUPVAL", 2, 0, _false },
-	{ "SETUPVAL", 2, 0, _false },
-	{ "CLOSEUPVALS", 1, 0, _false },
-	{ "GETIMPORT", 4, 4, _true },
-	{ "GETTABLE", 3, 0, _false },
-	{ "SETTABLE", 3, 0, _false },
-	{ "GETTABLEKS", 3, 1, _true },
-	{ "SETTABLEKS", 3, 1, _true },
-	{ "GETTABLEN", 3, 0, _false },
-	{ "SETTABLEN", 3, 0, _false },
-	{ "NEWCLOSURE", 4, 0, _false },
-	{ "NAMECALL", 3, 1, _true },
-	{ "CALL", 3, 0, _false },
-	{ "RETURN", 2, 0, _false },
-	{ "JUMP", 4, 0, _false },
-	{ "JUMPBACK", 4, 0, _false },
-	{ "JUMPIF", 4, 0, _false },
-	{ "JUMPIFNOT", 4, 0, _false },
-	{ "JUMPIFEQ", 4, 0, _true },
-	{ "JUMPIFLE", 4, 0, _true },
-	{ "JUMPIFLT", 4, 0, _true },
-	{ "JUMPIFNOTEQ", 4, 0, _true },
-	{ "JUMPIFNOTLE", 4, 0, _true },
-	{ "JUMPIFNOTLT", 4, 0, _true },
-	{ "ADD", 3, 0, _false },
-	{ "SUB", 3, 0, _false },
-	{ "MUL", 3, 0, _false },
-	{ "DIV", 3, 0, _false },
-	{ "MOD", 3, 0, _false },
-	{ "POW", 3, 0, _false },
-	{ "ADDK", 3, 2, _false },
-	{ "SUBK", 3, 2, _false },
-	{ "MULK", 3, 2, _false },
-	{ "DIVK", 3, 2, _false },
-	{ "MODK", 3, 2, _false },
-	{ "POWK", 3, 2, _false },
-	{ "AND", 3, 0, _false },
-	{ "OR", 3, 0, _false },
-	{ "ANDK", 3, 2, _false },
-	{ "ORK", 3, 2, _false },
-	{ "CONCAT", 3, 0, _false },
-	{ "NOT", 2, 0, _false },
-	{ "MINUS", 2, 0, _false },
-	{ "LENGTH", 2, 0, _false },
-	{ "NEWTABLE", 2, 0, _true },
-	{ "DUPTABLE", 4, 3, _false },
-	{ "SETLIST", 3, 0, _true },
-	{ "FORNPREP", 4, 0, _false },
-	{ "FORNLOOP", 4, 0, _false },
-	{ "FORGLOOP", 4, 8, _true },
-	{ "FORGPREP_INEXT", 4, 0, _false },
-	{ "FASTCALL3", 3, 1, _true },
-	{ "FORGPREP_NEXT", 4, 0, _false },
-	{ "DEP_FORGLOOP_NEXT", 0, 0, _false },
-	{ "GETVARARGS", 2, 0, _false },
-	{ "DUPCLOSURE", 4, 3, _false },
-	{ "PREPVARARGS", 1, 0, _false },
-	{ "LOADKX", 1, 1, _true },
-	{ "JUMPX", 5, 0, _false },
-	{ "FASTCALL", 3, 0, _false },
-	{ "COVERAGE", 5, 0, _false },
-	{ "CAPTURE", 2, 0, _false },
-	{ "SUBRK", 3, 7, _false },
-	{ "DIVRK", 3, 7, _false },
-	{ "FASTCALL1", 3, 0, _false },
-	{ "FASTCALL2", 3, 0, _true },
-	{ "FASTCALL2K", 3, 1, _true },
-	{ "FORGPREP", 4, 0, _false },
-	{ "JUMPXEQKNIL", 4, 5, _true },
-	{ "JUMPXEQKB", 4, 5, _true },
-	{ "JUMPXEQKN", 4, 6, _true },
-	{ "JUMPXEQKS", 4, 6, _true },
-	{ "IDIV", 3, 0, _false },
-	{ "IDIVK", 3, 2, _false },
+	{ 0, 0, _false },
+	{ 0, 0, _false },
+	{ 1, 0, _false },
+	{ 3, 0, _false },
+	{ 4, 0, _false },
+	{ 4, 3, _false },
+	{ 2, 0, _false },
+	{ 1, 1, _true },
+	{ 1, 1, _true },
+	{ 2, 0, _false },
+	{ 2, 0, _false },
+	{ 1, 0, _false },
+	{ 4, 4, _true },
+	{ 3, 0, _false },
+	{ 3, 0, _false },
+	{ 3, 1, _true },
+	{ 3, 1, _true },
+	{ 3, 0, _false },
+	{ 3, 0, _false },
+	{ 4, 0, _false },
+	{ 3, 1, _true },
+	{ 3, 0, _false },
+	{ 2, 0, _false },
+	{ 4, 0, _false },
+	{ 4, 0, _false },
+	{ 4, 0, _false },
+	{ 4, 0, _false },
+	{ 4, 0, _true },
+	{ 4, 0, _true },
+	{ 4, 0, _true },
+	{ 4, 0, _true },
+	{ 4, 0, _true },
+	{ 4, 0, _true },
+	{ 3, 0, _false },
+	{ 3, 0, _false },
+	{ 3, 0, _false },
+	{ 3, 0, _false },
+	{ 3, 0, _false },
+	{ 3, 0, _false },
+	{ 3, 2, _false },
+	{ 3, 2, _false },
+	{ 3, 2, _false },
+	{ 3, 2, _false },
+	{ 3, 2, _false },
+	{ 3, 2, _false },
+	{ 3, 0, _false },
+	{ 3, 0, _false },
+	{ 3, 2, _false },
+	{ 3, 2, _false },
+	{ 3, 0, _false },
+	{ 2, 0, _false },
+	{ 2, 0, _false },
+	{ 2, 0, _false },
+	{ 2, 0, _true },
+	{ 4, 3, _false },
+	{ 3, 0, _true },
+	{ 4, 0, _false },
+	{ 4, 0, _false },
+	{ 4, 8, _true },
+	{ 4, 0, _false },
+	{ 3, 1, _true },
+	{ 4, 0, _false },
+	{ 0, 0, _false },
+	{ 2, 0, _false },
+	{ 4, 3, _false },
+	{ 1, 0, _false },
+	{ 1, 1, _true },
+	{ 5, 0, _false },
+	{ 3, 0, _false },
+	{ 5, 0, _false },
+	{ 2, 0, _false },
+	{ 3, 7, _false },
+	{ 3, 7, _false },
+	{ 3, 0, _false },
+	{ 3, 0, _true },
+	{ 3, 1, _true },
+	{ 4, 0, _false },
+	{ 4, 5, _true },
+	{ 4, 5, _true },
+	{ 4, 6, _true },
+	{ 4, 6, _true },
+	{ 3, 0, _false },
+	{ 3, 2, _false },
 }
 
 local LUA_MULTRET = -1
@@ -359,16 +359,16 @@ local function readInstruction(codeList)
 	local opcode = bit32_band(value, 255)
 
 	local opinfo = opList[opcode + 1]
-	local opname = opinfo[1]
-	local opmode = opinfo[2]
-	local kmode = opinfo[3]
-	local usesAux = opinfo[4]
+	-- local opname = opinfo[1]
+	local opmode = opinfo[1]
+	local kmode = opinfo[2]
+	local usesAux = opinfo[3]
 
 	local inst = {
 		a = opcode,
-		b = opname,
+		-- opname = opname,
 		-- opname = opmode,
-		c = kmode,
+		b = kmode,
 		-- d = usesAux,
 	}
 
@@ -394,7 +394,7 @@ local function readInstruction(codeList)
 
 	if usesAux then
 		local aux = readWord()
-		inst.d = aux
+		inst.c = aux
 
 		table_insert(codeList, { --[[e = aux,]]
 			b = "auxvalue",
@@ -405,16 +405,16 @@ local function readInstruction(codeList)
 end
 
 local function checkkmode(inst, k)
-	local kmode = inst.c
+	local kmode = inst.b
 
 	if kmode == 1 then --// AUX
-		inst.K = k[inst.d + 1]
+		inst.K = k[inst.c + 1]
 	elseif kmode == 2 then --// C
 		inst.K = k[inst.C + 1]
 	elseif kmode == 3 then --// D
 		inst.K = k[inst.D + 1]
 	elseif kmode == 4 then --// AUX import
-		local extend = inst.d
+		local extend = inst.c
 		local count = bit32_rshift(extend, 30)
 		local id0 = bit32_band(bit32_rshift(extend, 20), 1023)
 
@@ -435,15 +435,15 @@ local function checkkmode(inst, k)
 		-- 	inst.K = resolveImportConstant(luau_settings.staticEnvironment, count, inst.K0, inst.K1, inst.K2)
 		-- end
 	elseif kmode == 5 then --// AUX boolean low 1 bit
-		inst.K = bit32_extract(inst.d, 0, 1) == 1
-		inst.KN = bit32_extract(inst.d, 31, 1) == 1
+		inst.K = bit32_extract(inst.c, 0, 1) == 1
+		inst.KN = bit32_extract(inst.c, 31, 1) == 1
 	elseif kmode == 6 then --// AUX number low 24 bits
-		inst.K = k[bit32_extract(inst.d, 0, 24) + 1]
-		inst.KN = bit32_extract(inst.d, 31, 1) == 1
+		inst.K = k[bit32_extract(inst.c, 0, 24) + 1]
+		inst.KN = bit32_extract(inst.c, 31, 1) == 1
 	elseif kmode == 7 then --// B
 		inst.K = k[inst.B + 1]
 	elseif kmode == 8 then --// AUX number low 16 bits
-		inst.K = bit32_band(inst.d, 15)
+		inst.K = bit32_band(inst.c, 15)
 	end
 end
 
@@ -709,7 +709,7 @@ local function luau_wrapclosure(--[[module, ]]proto, upvals)
 
 			debugging.a = pc
 			-- debugging.top = top
-			debugging.b = inst.b
+			debugging.b = op
 
 			pc += 1
 
@@ -891,7 +891,7 @@ local function luau_wrapclosure(--[[module, ]]proto, upvals)
 						inst = callInst
 						op = callOp
 						debugging.pc = pc
-						debugging.name = inst.b
+						debugging.name = inst.opname
 
 						table_remove(ret_list, 1)
 
@@ -964,37 +964,37 @@ local function luau_wrapclosure(--[[module, ]]proto, upvals)
 					pc += inst.D
 				end
 			elseif op == 27 then --[[ JUMPIFEQ ]]
-				if stack[inst.A] == stack[inst.d] then
+				if stack[inst.A] == stack[inst.c] then
 					pc += inst.D
 				else
 					pc += 1
 				end
 			elseif op == 28 then --[[ JUMPIFLE ]]
-				if stack[inst.A] <= stack[inst.d] then
+				if stack[inst.A] <= stack[inst.c] then
 					pc += inst.D
 				else
 					pc += 1
 				end
 			elseif op == 29 then --[[ JUMPIFLT ]]
-				if stack[inst.A] < stack[inst.d] then
+				if stack[inst.A] < stack[inst.c] then
 					pc += inst.D
 				else
 					pc += 1
 				end
 			elseif op == 30 then --[[ JUMPIFNOTEQ ]]
-				if stack[inst.A] == stack[inst.d] then
+				if stack[inst.A] == stack[inst.c] then
 					pc += 1
 				else
 					pc += inst.D
 				end
 			elseif op == 31 then --[[ JUMPIFNOTLE ]]
-				if stack[inst.A] <= stack[inst.d] then
+				if stack[inst.A] <= stack[inst.c] then
 					pc += 1
 				else
 					pc += inst.D
 				end
 			elseif op == 32 then --[[ JUMPIFNOTLT ]]
-				if stack[inst.A] < stack[inst.d] then
+				if stack[inst.A] < stack[inst.c] then
 					pc += 1
 				else
 					pc += inst.D
@@ -1055,7 +1055,7 @@ local function luau_wrapclosure(--[[module, ]]proto, upvals)
 			elseif op == 52 then --[[ LENGTH ]]
 				stack[inst.A] = #stack[inst.B]
 			elseif op == 53 then --[[ NEWTABLE ]]
-				stack[inst.A] = table_create(inst.d)
+				stack[inst.A] = table_create(inst.c)
 
 				pc += 1 --// adjust for aux
 			elseif op == 54 then --[[ DUPTABLE ]]
@@ -1074,7 +1074,7 @@ local function luau_wrapclosure(--[[module, ]]proto, upvals)
 					c = top - B + 1
 				end
 
-				table_move(stack, B, B + c - 1, inst.d, stack[A])
+				table_move(stack, B, B + c - 1, inst.c, stack[A])
 
 				pc += 1 --// adjust for aux
 			elseif op == 56 then --[[ FORNPREP ]]
@@ -1734,7 +1734,7 @@ local function luau_wrapclosure(--[[module, ]]proto, upvals)
 			elseif op == 82 then --[[ IDIVK ]]
 				stack[inst.A] = stack[inst.B] // inst.K
 				--[=[else
-					error("Unsupported Opcode: " .. inst.b .. " op: " .. op)]=]
+					error("Unsupported Opcode: " .. inst.opname .. " op: " .. op)]=]
 			end
 		end
 
@@ -1770,7 +1770,7 @@ local function luau_wrapclosure(--[[module, ]]proto, upvals)
 
 		passed = _nil -- we'll keep this, even though it is removable
 
-		local debugging = { a = 0, b = "NONE" }
+		local debugging = { a = 0, b = 0 }
 		local result = table_pack(pcall(luau_execute, debugging, stack, proto.h, proto.e, varargs))
 		--if luau_settings.errorHandling then
 		--	result = table_pack(pcall(luau_execute, debugging, stack, proto.h, proto.e, varargs))
