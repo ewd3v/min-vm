@@ -964,37 +964,37 @@ local function luau_wrapclosure(--[[module, ]]proto, upvals)
 					pc += inst.D
 				end
 			elseif op == 27 then --[[ JUMPIFEQ ]]
-				if stack[inst.A] == stack[inst.f] then
+				if stack[inst.A] == stack[inst.d] then
 					pc += inst.D
 				else
 					pc += 1
 				end
 			elseif op == 28 then --[[ JUMPIFLE ]]
-				if stack[inst.A] <= stack[inst.f] then
+				if stack[inst.A] <= stack[inst.d] then
 					pc += inst.D
 				else
 					pc += 1
 				end
 			elseif op == 29 then --[[ JUMPIFLT ]]
-				if stack[inst.A] < stack[inst.f] then
+				if stack[inst.A] < stack[inst.d] then
 					pc += inst.D
 				else
 					pc += 1
 				end
 			elseif op == 30 then --[[ JUMPIFNOTEQ ]]
-				if stack[inst.A] == stack[inst.f] then
+				if stack[inst.A] == stack[inst.d] then
 					pc += 1
 				else
 					pc += inst.D
 				end
 			elseif op == 31 then --[[ JUMPIFNOTLE ]]
-				if stack[inst.A] <= stack[inst.f] then
+				if stack[inst.A] <= stack[inst.d] then
 					pc += 1
 				else
 					pc += inst.D
 				end
 			elseif op == 32 then --[[ JUMPIFNOTLT ]]
-				if stack[inst.A] < stack[inst.f] then
+				if stack[inst.A] < stack[inst.d] then
 					pc += 1
 				else
 					pc += inst.D
@@ -1055,7 +1055,7 @@ local function luau_wrapclosure(--[[module, ]]proto, upvals)
 			elseif op == 52 then --[[ LENGTH ]]
 				stack[inst.A] = #stack[inst.B]
 			elseif op == 53 then --[[ NEWTABLE ]]
-				stack[inst.A] = table_create(inst.f)
+				stack[inst.A] = table_create(inst.d)
 
 				pc += 1 --// adjust for aux
 			elseif op == 54 then --[[ DUPTABLE ]]
@@ -1074,7 +1074,7 @@ local function luau_wrapclosure(--[[module, ]]proto, upvals)
 					c = top - B + 1
 				end
 
-				table_move(stack, B, B + c - 1, inst.f, stack[A])
+				table_move(stack, B, B + c - 1, inst.d, stack[A])
 
 				pc += 1 --// adjust for aux
 			elseif op == 56 then --[[ FORNPREP ]]
