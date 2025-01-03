@@ -1,5 +1,5 @@
 {
-    "name": "zluau-vm",
+    "name": "luau-vm-compress",
     "module": "src/index.js",
     "scripts": {
         "test": "bun run test/index.js",
